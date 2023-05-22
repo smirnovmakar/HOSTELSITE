@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Бронирование</title>
+  <style>
+    body {
+          background: #b6d5f6 fixed;
+          background-size: cover;
+      }
+
+    .inline-block {
+      display: inline-block;
+    }
+
+    table {
+      width: 100%;
+      font-size: 18px;
+    }
+
+    a.room-link:link{color: white; text-decoration: none}
+    a.room-link:visited{color: white;}
+
+    .room-button {
+      padding: 10px 20px; /* Задает внутренний отступ кнопки */
+      font-size: 16px; /* Задает размер шрифта кнопки */
+      border-radius: 8px; /*Задает скругленные углы кнопки */
+      color: #ffffff; /* Задает цвет текста кнопки */
+    }
+
+    .occupied {
+    background-color: #FF000072;
+    border: 2px solid #FF000072;
+    }
+
+    .free {
+    background-color: #00800087;
+    border: 2px solid #00800087;
+    }
+
+    a:link{color: #224588FF; text-decoration: none}
+    a:visited{color: #224588FF;}
+
+    a.menu-link:hover {
+        background-color: #b6d5f6;
+        border-radius: 3px;
+    }
+    a.menu-link:active {
+        background-color: #6c90d3;
+    }
+  </style>
+</head>
+<body>
+
+<header style="background-color: #d8ebff; border: 1px solid rgba(39,113,225,0.46); border-radius: 8px;">
+    <div class="inline-block" style="position: relative; top: 6px; left: 10px">
+        <img src="{% static 'hostel/images/vodoley.png' %}" height="100px" style="border-radius: 8px;">
+    </div>
+
+
+<h1 style="text-align: center; color: #224588FF; margin-top: -80px; font-family: Arial, sans-serif">ВОДОЛЕЙ</h1>
+
+<div class="inline-block" style="margin-top: 5px; font-family: Arial, sans-serif">
+  <a href="/" class="menu-link" style="margin-left: 550px;">Главная</a>
+  <a href="/nomera" class="menu-link" >Номера</a>
+  <a href="/vhod" class="menu-link" >Бронирование</a>
+  <a href="/reg" class="menu-link" >Регистрация</a>
+</div>
+
+<hr color='5da4fc'>
+</header>
+
+<div style="margin-left: 140px; margin-top: 30px">
+    {% for el in allrooms %}
+    <button class="room-button {% if el.today_status == 'СВОБОДЕН' or el.tomorrow_status == 'СВОБОДЕН' %} free {% else %} occupied {% endif %}">
+        <a class=room-link href="/room/{{el.number}}"> Номер {{el.number}}</a>
+    </button>
+{% endfor %}
+</div>
+
+<div class="inline-block" style="background-color: rgba(0,149,255,0.43); width: 900px; position: relative; left: 250px; top: 10px; border-radius: 8px; padding: 0 30px 0 30px;">
+    <p style=" color: white; font-size: 16px; font-family: Arial, sans-serif">
+        &#x1F4A1; Бронирование на сайте бесплатно. По этой причине бронирование возможно только на текущие и/или
+        следущие сутки с момента бронирования. Заезд/Выезд – 08:00.
+    </p>
+</div>
+
+<div style="margin-top: 50px;">
+    <h2 style="text-align: center; margin-bottom: 10px; font-size: 20px; font-family: Arial, sans-serif; color: #224588">Планировка комнат</h2>
+</div>
+<div class="inline-block" style="background: rgb(121,168,225); margin-left: 400px; font-family: Arial, sans-serif">
+    <table style="width: 600px; height: 300px; border: 2px solid #224588; border-collapse: collapse; border-radius: 8px; color: #224588">
+        <tr>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">1</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">2</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">3</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">4</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">5</td>
+        </tr>
+        <tr>
+            <td colspan="5" align="center" style="padding: 10px; border: 1px solid #224588; background-color: rgb(196,216,250); font-weight: bold;">Коридор</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">6</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">7</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">8</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">9</td>
+            <td style="padding: 10px; border: 1px solid #224588; text-align: center;">10</td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

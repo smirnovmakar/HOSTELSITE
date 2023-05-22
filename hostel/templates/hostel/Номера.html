@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Водолей</title>
+  <style>
+      body {
+          background: #b6d5f6 fixed;
+          background-size: cover;
+      }
+
+      .inline-block {
+          display: inline-block;
+      }
+
+      a:link{color: #224588FF; text-decoration: none}
+      a:visited{color: #224588FF;}
+
+      a:hover {
+          background-color: #b6d5f6;
+          border-radius: 3px;
+      }
+
+      a:active {
+          background-color: #6c90d3;
+      }
+
+      .room-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .room {
+      width: 400px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .room-title {
+      color: #224588;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .room-description {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+  </style>
+</head>
+<body>
+<header style="background-color: #d8ebff; border: 1px solid rgba(39,113,225,0.46); border-radius: 8px;">
+    <div class="inline-block" style="position: relative; top: 6px; left: 10px">
+        <img src="{% static 'hostel/images/vodoley.png' %}" height="100px" style="border-radius: 8px;">
+    </div>
+
+
+<h1 style="text-align: center; color: #224588FF; margin-top: -80px; font-family: Arial, sans-serif">ВОДОЛЕЙ</h1>
+
+<div class="inline-block" style="margin-top: 5px; font-family: Arial, sans-serif">
+  <a href="/" class="menu-link" style="margin-left: 550px;">Главная</a>
+  <a href="/nomera" class="menu-link" >Номера</a>
+  <a href="/vhod" class="menu-link" >Бронирование</a>
+  <a href="/reg" class="menu-link" >Регистрация</a>
+</div>
+
+<hr color='5da4fc'>
+</header>
+
+<div class="room-container" style="display: flex; justify-content: center; align-items: flex-start; font-family: Arial, sans-serif">
+    <div class="room">
+      <h2 class="room-title">Стандартный номер</h2>
+      <img src="{% static 'hostel/images/standart_room-1.jpg' %}" alt="Стандартный номер" style="width: 100%; border-radius: 8px;">
+      <p class="room-description">
+        Наш стандартный номер предлагает уют и комфорт по доступной цене. Он идеально подходит для отдыхающих, которым важно сохранить баланс между качеством и стоимостью. В номере вы найдете удобную кровать, собственную ванную комнату и все необходимые удобства для приятного пребывания.
+      </p>
+      <p class="room-price">Цена: <span class="room-price-value">1500 руб.</span></p>
+    </div>
+
+    <div class="room">
+      <h2 class="room-title">Номер Люкс</h2>
+      <img src="{% static 'hostel/images/luks.jpg' %}" alt="Номер Люкс" style="width: 100%; border-radius: 8px;">
+      <p class="room-description">
+        Наш номер Люкс предлагает роскошь и изысканность для особых моментов. Этот просторный и элегантно оформленный номер позволит вам насладиться высоким уровнем комфорта и удовлетворить все ваши потребности. В нем есть отдельная спальня с удобной кроватью, просторная гостиная зона, роскошная ванная комната с джакузи и балкон с прекрасным видом.
+      </p>
+      <p class="room-price">Цена: <span class="room-price-value">3000 руб.</span></p>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

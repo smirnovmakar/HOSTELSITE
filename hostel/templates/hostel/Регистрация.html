@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Водолей</title>
+
+   <style>
+    body {
+          background: #b6d5f6 fixed;
+          background-size: cover;
+      }
+
+    .inline-block {
+      display: inline-block;
+    }
+
+    a:link{color: #224588FF; text-decoration: none}
+    a:visited{color: #224588FF;}
+
+    a.menu-link:hover {
+        background-color: #b6d5f6;
+        border-radius: 3px;
+    }
+    a.menu-link:active {
+        background-color: #6c90d3;
+   </style>
+
+    <script>
+        function wshowMessage() {
+            alert("Пользователь с таким логином уже существует!");
+        }
+        function gshowMessage() {
+            alert("Регистрация прошла успешно!!");
+        }
+    </script>
+</head>
+
+<body>
+
+<header style="background-color: #d8ebff; border: 1px solid rgba(39,113,225,0.46); border-radius: 8px;">
+    <div class="inline-block" style="position: relative; top: 6px; left: 10px">
+        <img src="{% static 'hostel/images/vodoley.png' %}" height="100px" style="border-radius: 8px;">
+    </div>
+
+
+<h1 style="text-align: center; color: #224588FF; margin-top: -80px; font-family: Arial, sans-serif">ВОДОЛЕЙ</h1>
+
+<div class="inline-block" style="margin-top: 5px; font-family: Arial, sans-serif">
+  <a href="/" class="menu-link" style="margin-left: 550px;">Главная</a>
+  <a href="/nomera" class="menu-link" >Номера</a>
+  <a href="/vhod" class="menu-link" >Бронирование</a>
+  <a href="/reg" class="menu-link" >Регистрация</a>
+</div>
+
+<hr color='5da4fc'>
+</header>
+
+<div style="text-align: center; position: relative; top: 30px; font-family: Arial, sans-serif; color: #224588FF;">
+    <h2>Регистрация</h2>
+  <form method="post" style="display: inline-block; text-align: left; padding: 20px; border-radius: 8px; background-color: #d8ebff; border: 1px solid rgba(39, 113, 225, 0.46); ">
+    {% csrf_token %}
+    <label for="id_user_name">Имя пользователя:</label><br>
+    {{ form.user_name }}<br><br>
+    <label for="id_email">Почта (логин):</label><br>
+    {{ form.email }}<br><br>
+    <label for="id_password">Пароль:</label><br>
+    {{ form.password }}<br><br>
+    <input type="submit" value="Зарегистрироваться" style="background-color: #224588FF; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-family: Arial, sans-serif;">
+    <input type="reset" value="Очистить" style="background-color: #224588FF; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-family: Arial, sans-serif;">
+  </form>
+</div>
+
+
+{% if message %}
+<script>
+    {% if message == "Пользователь с таким логином уже существует!" %}
+    alert("{{ message }}");
+    {% elif message == "Регистрация прошла успешно!!" %}
+    alert("{{ message }}");
+    {% endif %}
+</script>
+{% endif %}
+
+</body>
+</html>

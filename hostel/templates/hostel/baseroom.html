@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru ">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    body {
+      background: #b6d5f6 fixed;
+      background-size: cover;
+    }
+
+    .inline-block {
+            display: inline-block;
+        }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      height: 350px;
+      padding: 20px;
+    }
+
+    .image {
+      width: 50%;
+    }
+
+    .description {
+        width: 50%;
+        text-align: left;
+        color: #fff;
+        font-size: 24px;
+    }
+
+    .bronbutt_active {
+      padding: 10px 20px; /* Задает внутренний отступ кнопки */
+      font-size: 16px; /* Задает размер шрифта кнопки */
+      border-radius: 8px; /*Задает скругленные углы кнопки */
+      color: #ffffff; /* Задает цвет текста кнопки */
+      background-color: #4287f5; /* Задает цвет фона кнопки */
+      border: 2px solid #4287f5; /* Задает стиль границы кнопки */
+    }
+
+    button.bronbutt_active:hover {
+        background-color: #42cbf5;
+    }
+    button.bronbutt_active:active {
+        background-color: #4287f5;
+    }
+
+    .bronbutt_disabled {
+      padding: 10px 20px; /* Задает внутренний отступ кнопки */
+      font-size: 16px; /* Задает размер шрифта кнопки */
+      border-radius: 8px; /*Задает скругленные углы кнопки */
+      color: #ffffff; /* Задает цвет текста кнопки */
+      background-color: rgba(241, 9, 9, 0.51); /* Задает цвет фона кнопки */
+      border: 2px solid rgba(241, 9, 9, 0.51); /* Задает стиль границы кнопки */
+    }
+
+    a:link{color: #224588FF; text-decoration: none}
+    a:visited{color: #224588FF;}
+
+    a.menu-link:hover {
+        background-color: #b6d5f6;
+        border-radius: 3px;
+    }
+    a.menu-link:active {
+        background-color: #6c90d3;
+    }
+
+  </style>
+<script>
+    function showMessage() {
+      alert("Номер успешно забронирован!");
+    }
+</script>
+</head>
+
+<body>
+<header style="background-color: #d8ebff; border: 1px solid rgba(39,113,225,0.46); border-radius: 8px;">
+    <div class="inline-block" style="position: relative; top: 6px; left: 10px">
+        <img src="{% static 'hostel/images/vodoley.png' %}" height="100px" style="border-radius: 8px;">
+    </div>
+
+
+<h1 style="text-align: center; color: #224588FF; margin-top: -80px; font-family: Arial, sans-serif">ВОДОЛЕЙ</h1>
+
+<div class="inline-block" style="margin-top: 5px; font-family: Arial, sans-serif">
+  <a href="/" class="menu-link" style="margin-left: 550px;">Главная</a>
+  <a href="/nomera" class="menu-link" >Номера</a>
+  <a href="/vhod" class="menu-link" >Бронирование</a>
+  <a href="/reg" class="menu-link" >Регистрация</a>
+</div>
+
+<hr color='5da4fc'>
+</header>
+
+<h2 align="center" style="color: #4287f5">{% block numberofroom %}{% endblock %}</h2>
+
+<div class="container">
+<div class="image">
+  {% block source %}{% endblock %}
+</div>
+
+<div class="description">
+  {% block description %}{% endblock %}
+</div>
+</div>
+
+{#<div style="position: relative; left: 845px; bottom: 50px;  color: rgba(241, 9, 9, 0.51)">#}
+{#  {% if room_is_free == False %}<h2>Занят</h2>{% endif %}#}
+{#</div>#}
+
+{% if today_room_is_free == True %}
+    <form  method="post">
+    {% csrf_token %}
+    <button name="today" type="submit" class=bronbutt_active onclick="showMessage()" style="position: relative; left: 750px; top: -30px">Сегодня: Забронировать</button>
+    </form>
+{% else %}
+    <button class=bronbutt_disabled style="position: relative; left: 750px; top: -30px">Сегодня: Занят</button>
+{% endif %}
+<br>
+{% if tomorrow_room_is_free == True %}
+    <form  method="post">
+    {% csrf_token %}
+    <button name="tomorrow" type="submit" class=bronbutt_active onclick="showMessage()" style="position: relative; left: 750px; top: -20px">Завтра: Забронировать</button>
+    </form>
+{% else %}
+    <button class=bronbutt_disabled style="position: relative; left: 750px; top: -20px">Завтра: Занят</button>
+{% endif %}
+
+</body>
+</html>
+
